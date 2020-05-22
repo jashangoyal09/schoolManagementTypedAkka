@@ -13,7 +13,8 @@ object StartProcessing {
           SystemActor("System-Id"), "system-actor"))
 
       for (i <- 1 to 10) {
-        context.spawn(UserActor(system), s"handling$i")
+        val userActorRef = context.spawn(UserActor(system), s"handling$i")
+        userActorRef ! UserActor.AddUser("userId","userName","userEmail")
       }
       Behaviors.empty
     }
