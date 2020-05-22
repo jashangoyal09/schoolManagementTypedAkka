@@ -13,6 +13,7 @@ import akka.persistence.typed.scaladsl.Effect
 import akka.persistence.typed.scaladsl.EventSourcedBehavior
 
 object SchoolManagement{
+
   final case class State(subjects: Map[String, String], admissionDate: Option[Instant]) extends CborSerializable {
 
     def hasSubjects(subjectId: String): Boolean =
