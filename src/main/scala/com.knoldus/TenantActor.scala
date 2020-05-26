@@ -53,7 +53,7 @@ object TenantActor {
     }
   }
 
-  def apply(system: ActorRef[SystemRequest],tenantId:String, persistenceId: PersistenceId): Behavior[Command] = {
+  def apply(persistenceId: PersistenceId): Behavior[Command] = {
     print("\n\ninside the tenant apply\n\n")
     EventSourcedBehavior[Command, Event, TenantState](
       persistenceId,

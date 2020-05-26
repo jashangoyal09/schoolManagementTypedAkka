@@ -77,6 +77,7 @@ object UserActor {
 
 
       val sharding = ClusterSharding(context.system)
+
       val messageExtractor: HashCodeNoEnvelopeMessageExtractor[TenantActor.Command] =
         new HashCodeNoEnvelopeMessageExtractor[TenantActor.Command](numberOfShards = 30) {
           override def entityId(message: TenantActor.Command): String = message.tenantId
@@ -87,7 +88,7 @@ object UserActor {
       val shardRegion: ActorRef[TenantActor.Command] =
         sharding.init(
           Entity(TenantRequestHandlerTypeKey) { context =>
-            TenantActor(system,context.entityId,PersistenceId(context.entityTypeKey.name, context.entityId))
+            TenantActor(PersistenceId(context.entityTypeKey.name, context.entityId))
           }.withMessageExtractor(messageExtractor)
             .withStopMessage(TenantActor.GracefulStop))
       val counterOne: EntityRef[TenantActor.Command] = sharding.entityRefFor(TenantRequestHandlerTypeKey, "tenant-1")
