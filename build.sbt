@@ -12,7 +12,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-serialization-jackson" % akkaVersion,
   "com.typesafe.akka" %% "akka-cluster-sharding-typed" % akkaVersion,
   "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.typesafe.akka" %% "akka-stream-typed" % "2.5.31",
+//  "com.typesafe.akka" %% "akka-stream-typed" % "2.5.31",
   "com.typesafe.akka" %% "akka-actor-testkit-typed"    % akkaVersion  % "test",
   "org.scalatest" %% "scalatest" % "3.1.2" % Test
 )

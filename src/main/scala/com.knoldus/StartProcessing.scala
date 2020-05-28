@@ -12,10 +12,10 @@ object StartProcessing {
         ClusterSingleton(context.system).init(SingletonActor(
           SystemActor("System-Id"), "system-actor"))
 
-      for (i <- 1 to 10) {
-        val userActorRef = context.spawn(UserActor(system), s"handling$i")
-        userActorRef ! UserActor.AddUser("userId","userName","userEmail")
-      }
+//      for (i <- 1 to 10) {
+//        val userActorRef = context.spawn(UserActor(system), s"handling$i")
+//        userActorRef ! UserActor.AddUser("userId","userName","userEmail")
+//      }
       Behaviors.empty
     }
   }
